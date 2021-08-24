@@ -12,8 +12,8 @@ jobs:
       matrix:
         include:
           - arch: s390x
-            distro: buster
-          # python-version: "3.8"
+            distro: bullseye
+          # python-version: "3.9"
 
     steps:
       - name: Checkout source
@@ -21,7 +21,7 @@ jobs:
         with:
           submodules: recursive
 
-      - uses: uraimo/run-on-arch-action@v2.0.5
+      - uses: uraimo/run-on-arch-action@v2.1.1
         name: Run commands
         id: runcmd
         with:
@@ -48,8 +48,8 @@ jobs:
           shell: /bin/sh
 
           install: |
-            apt-get update -q -y
-            apt-get install -q -y python3-venv python3-pip python3-setuptools
+            apt update -q -y
+            apt install -q -y git python3-venv python3-pip python3-setuptools
 
           # Set an output parameter `uname` for use in subsequent steps
           run: |
